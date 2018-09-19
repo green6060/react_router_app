@@ -15,7 +15,7 @@ class Api::ProductsController < ApplicationController
     if product.save
       render json: product
     else
-      render json: product.errors, status: 422
+      render json: { errors: product.errors.full_messages.join(',') }, status: :unprocessable_entity
     end
   end
 
